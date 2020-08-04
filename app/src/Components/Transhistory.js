@@ -1,13 +1,18 @@
 import React, { Fragment } from "react";
 import "../App.css";
+import { FaWindowMinimize, FaTimes } from "react-icons/fa";
 
 function Transhistory() {
   return (
-    <div id="history-list" class="history">
-      <h4>History</h4>
-      <span class="expense">Expense</span>
-      <span class="income">Income</span>
-    </div>
+    <Fragment>
+      <h4>
+        <p className="icon small">
+          <FaWindowMinimize />
+        </p>
+        History
+      </h4>
+      <div id="history-list" className="history"></div>
+    </Fragment>
   );
 }
 

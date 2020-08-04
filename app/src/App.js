@@ -5,6 +5,8 @@ import History from "./Components/Transhistory";
 import NewTransaction from "./Components/Addtransaction";
 
 function App() {
+  const transactions = [];
+
   return (
     <div className="App">
       <h2>Expense Tracker</h2>
