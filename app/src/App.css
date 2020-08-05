@@ -1,56 +1,42 @@
+:root {
+  --income-color: #027f15;
+  --expense-color: darkred;
+  --border-gray: lightslategray;
+  --border-purple: #d3a9f2;
+}
 .App {
   text-align: center;
   width: 325px;
   height: 100vh;
-  border-right: 5px solid #d3a9f2;
+  border-right: 5px solid var(--border-purple);
   display: flex;
   flex-direction: column;
   background-color: #fcfae8;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
 /* Components for add Transaction*/
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 300px;
-  padding: 10px;
 }
 .form input {
   width: 70%;
-  border: 1px solid lightslategray;
+  border: 1px solid var(--border-gray);
   padding: 3px;
   border-radius: 2px;
+  margin-bottom: 10px;
 }
 .submit {
   margin-top: 15px;
-  background-color: #d3a9f2;
+  background-color: var(--border-purple);
   border-radius: 4px;
   width: 70%;
   font-size: 16px;
   padding: 5px;
 }
-#key {
-  font-size: 12px;
-  padding: 0;
-  margin: 0;
-  color: darkred;
-}
+
 /* Component Transaction History */
 .history {
   display: flex;
@@ -64,25 +50,28 @@
   display: flex;
   flex-direction: row;
   width: 315px;
+  height: 30px;
 }
 .item {
-  border: 1px solid lightslategray;
-  text-align: right;
+  border: 1px solid var(--border-gray);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  text-align: baseline;
+  font-size: 16px;
+  height: 20px;
   width: 70%;
-  padding: 3px;
   margin: 0;
-  margin-bottom: 4px;
   background-color: white;
 }
 .expense {
-  border-right: 10px solid #a3170d;
+  border-right: 10px solid var(--expense-color);
   border-radius: 3px;
-  color: darkred;
+  color: var(--expense-color);
 }
 .income {
-  border-right: 10px solid #027f15;
+  border-right: 10px solid var(--income-color);
   border-radius: 3px;
-  color: #027f15;
+  color: var(--income-color);
 }
 /* Component Your Balance */
 .balance {
@@ -151,25 +140,31 @@ h4 {
 }
 /* Styling for pop-out icons */
 .pop-out {
-  visibility: hidden;
-}
-.output .pop-out {
-  opacity: 0.8;
+  visibility: collapse;
   margin: 0;
   padding: 0;
-  padding-top: 5px;
+  font-size: 12px;
+}
+.ghost-icon {
+  margin-left: 25px;
+  height: 20px;
+  opacity: 0.8;
   text-align: center;
-  background-color: darkred;
+  border: 1px solid var(--expense-color);
+  background-color: var(--expense-color);
   color: white;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  margin-left: 10px;
-  margin-bottom: 4px;
 }
 /* style error messages */
 .error {
   font-size: 14px;
   color: red;
+  margin: 0;
+}
+.on-focus {
+  font-size: 14px;
+  color: black;
   margin: 0;
 }
 /* Remove arrows and spinners from default input settings */
