@@ -1,12 +1,20 @@
 import React from "react";
 //import Transaction from "./Transaction";
 import "../App.css";
-import { FaWindowMinimize, FaTimes } from "react-icons/fa";
+import { FaWindowMinimize } from "react-icons/fa";
 
 function Transhistory(props) {
-  const newData = props.data;
-  const transHistory = [];
-  transHistory.push(newData);
+  const TransactionList = [];
+
+  function AllTransactions() {
+    console.log(props.entry);
+    TransactionList.push(props.entry);
+    if (TransactionList.length < 1) {
+      return null;
+    } else {
+      return TransactionList;
+    }
+  }
 
   return (
     <div className="App">
@@ -17,7 +25,7 @@ function Transhistory(props) {
         History
       </h4>
       <div id="history-list" className="history">
-        {/* <Transaction list={transHistory} /> */}
+        <AllTransactions />
       </div>
     </div>
   );

@@ -2,34 +2,58 @@ import React, { Fragment, useState } from "react";
 import "./App.css";
 import Balance from "./Components/Yourbalance";
 import History from "./Components/Transhistory";
-import { FaWindowMinimize } from "react-icons/fa";
+import { FaWindowMinimize, FaTimes } from "react-icons/fa";
 import "core-js";
 
 function App() {
   const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
+  const [data, setData] = useState();
+  let count = 0;
 
   //function for setting a new transaction desc and amnt
   function onSubmit() {
     if (description === "") {
       alert("please enter a description");
     } else if (amount === "") {
-      alert("pleast enter transaction amount");
+      alert("please enter transaction amount");
     } else {
-      console.log(transactionData);
-      // transHistory.push(transaction);
+      count = count + 1;
+      setData(transactionData());
       setAmount("");
       setDescription("");
     }
   }
-  const transactionData = { description, amount };
+
+  function transactionData() {
+    console.log(description, amount);
+    if (amount < 0) {
+      return (
+        <div id={count} className="output">
+          <FaTimes className="ghost-icon" />
+          <span className="item expense">
+            {description} <i className="right">${amount}</i>
+          </span>
+        </div>
+      );
+    } else {
+      return (
+        <div id={count} className="output">
+          <FaTimes className="ghost-icon" />
+          <span className="item income">
+            {description} <i className="right">${amount}</i>
+          </span>
+        </div>
+      );
+    }
+  }
 
   return (
     <Fragment>
       <div className="App">
         <h2>Expense Tracker</h2>
         <Balance />
-        <History data={transactionData} />
+        <History entry={data} />
         {/* Add Transaction Component below */}
         <div className="App">
           <h4>
