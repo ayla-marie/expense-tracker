@@ -1,21 +1,9 @@
 import React from "react";
 //import Transaction from "./Transaction";
 import "../App.css";
-import { FaWindowMinimize } from "react-icons/fa";
+import { FaWindowMinimize, FaTimes } from "react-icons/fa";
 
-function Transhistory(props) {
-  const TransactionList = [];
-
-  function AllTransactions() {
-    console.log(props.entry);
-    TransactionList.push(props.entry);
-    if (TransactionList.length < 1) {
-      return null;
-    } else {
-      return TransactionList;
-    }
-  }
-
+function Transhistory({ entries }) {
   return (
     <div className="App">
       <h4>
@@ -25,7 +13,14 @@ function Transhistory(props) {
         History
       </h4>
       <div id="history-list" className="history">
-        <AllTransactions />
+        {entries.map((entry, count) => (
+          <div key={count} className="output">
+            <FaTimes className="ghost-icon" />
+            <span className="item">
+              {entry.description} <i className="right">${entry.amount}</i>
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   );
